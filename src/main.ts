@@ -79,7 +79,7 @@ export default class PairwiseRankingPlugin extends Plugin {
       const content = await this.app.vault.read(file);
       return content
         .split('\n')
-        .map(line => line.trim())
+        .map(line => line.trim().replace(/^\s*\d+\.\s*/, ''))
         .filter(line => line.length > 0);
     } catch (error) {
       console.error('Error reading file:', error);
@@ -88,7 +88,11 @@ export default class PairwiseRankingPlugin extends Plugin {
   }
 
   private async writeItemsToFile(file: TFile, items: string[]): Promise<void> {
-    await this.app.vault.modify(file, items.join('\n'));
+    await this.app.vault.modify(file,
+      items
+        .map((item, idx) => `${idx + 1}. ${item}`)
+        .join('\n')
+    );
   }
 
   private async findInsertionPosition(
