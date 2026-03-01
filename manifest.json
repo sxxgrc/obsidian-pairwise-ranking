@@ -1,0 +1,10 @@
+{
+  "id": "pairwise-ranking",
+  "name": "Pairwise Ranking",
+  "version": "1.0.0",
+  "minAppVersion": "0.15.0",
+  "description": "O(log n) pairwise ranking stored in notes",
+  "author": "Santiago Garcia Acosta",
+  "authorUrl": "https://github.com/sxxgrc",
+  "isDesktopOnly": false
+}
